@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Chop chop</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sono">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      width: 100%;
+    }
+
+    .bgimg {
+
+      margin: 0;
+      background-image: url('house.jpg');
+      background-size: cover;
+      height: 100vh;
+      width: 100%;
+      position: absolute;
+      z-index: 0;
+    }
+
+    img {
+      height: 110%;
+    }
+
+    h1 {
+      font-family: 'Sono', serif;
+      color: #25322A;
+      padding: 40px;
+      padding-left: 780px;
+      padding-top: 350px;
+      font-size: 100px;
+      text-shadow: 2px 2px #BAC88E;
+    }
+
+    a {
+      font-family: 'Sono', serif;
+      color: #26533A;
+      padding: 0;
+      font-size: 25px;
+      text-decoration: none;
+    }
+
+    p {
+      font-family: 'Sono', serif;
+      color: #26533A;
+      padding: 20px;
+      font-size: 25px;
+      text-shadow: 3px 3px #3C7865;
+      position: fixed;
+    }
+
+    .axebar {
+      font-family: 'Sono', serif;
+      background-color: #718546;
+      padding: 7px;
+      width: 1400px;
+      height: 50px;
+      position: absolute;
+      z-index: 1;
+      bottom: 250px;
+      right: 280px;
+      border-radius: 75px;
+      box-shadow: 2px 2px #736920;
+    }
+
+    .axebarcenter {
+      font-family: 'Sono', serif;
+      background-color: #DCD498;
+      padding: 7px;
+      width: 60px;
+      height: 50px;
+      position: absolute;
+      z-index: 2;
+      bottom: 0px;
+      right: 675px;
+      border-radius: 3px;
+    }
+
+    .axemove {
+      font-family: 'Sono', serif;
+      background-color: #A09F96;
+      padding: 4px;
+      padding-top: 40px;
+      width: 2px;
+      height: 20px;
+      position: absolute;
+      z-index: 3;
+      bottom: 0px;
+      right: 675px;
+      border-radius: 4px;
+      animation-duration: 15s;
+      animation-name: movement;
+      animation-delay: 2s;
+      animation-iteration-count: 10;
+    }
+
+    @keyframes movement {
+      0% {
+        left: 0px;
+        top: 0px;
+      }
+
+      20% {
+        left: 675px;
+        top: 0px;
+      }
+
+      40% {
+        left: -615px;
+        top: 0px;
+      }
+
+      60% {
+        left: 675px;
+        top: 0px;
+      }
+
+      80% {
+        left: -615px;
+        top: 0px;
+      }
+
+      100% {
+        left: 675px;
+        top: 0px;
+      }
+    }
+
+    button {
+      font-family: 'Sono', serif;
+      color: #26533A;
+      padding: 20px;
+      margin: 40px;
+      font-size: 25px;
+      border-radius: 20px;
+      background-color: #D8E1BF;
+      box-shadow: 3px 3px #3C7865;
+      position: fixed;
+      top: 500px;
+      left: 825px;
+      border-width: 0;
+    }
+
+    #score {
+      font-family: 'Sono', serif;
+      color: #26533A;
+      padding: 20px;
+      margin: 40px;
+      font-size: 25px;
+      border-radius: 20px;
+      background-color: #D8E1BF;
+      box-shadow: 3px 3px #3C3C78;
+      position: fixed;
+      right: 80px;
+      bottom: 200px;
+    }
+
+    #rules {
+      font-family: 'Sono', serif;
+      color: #26533A;
+      padding: 20px;
+      margin: 100px;
+      font-size: 30px;
+      border-radius: 20px;
+      background-color: #D8E1BF;
+      box-shadow: 2px 2px #26533A;
+      position: fixed;
+      top: 100px;
+      left: 150px;
+    }
+
+    #return {
+      font-family: 'Sono', serif;
+      color: #26533A;
+      padding: 20px;
+      margin: 100px;
+      font-size: 25px;
+      border-radius: 20px;
+      background-color: #D8E1BF;
+      box-shadow: 2px 2px #26533A;
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      display: none;
+    }
+  </style>
+
+  <script>
+
+    var canChop = false;
+    var score = 0;
+    var scoreText = document.getElementById("score");
+    var negativescore = 0;
+    document.addEventListener('DOMContentLoaded', function () {
+
+      var blackBar = document.getElementById("linethingidk");
+      var axeBarCenter = document.getElementById("yellowBarCenter");
+      var score = 0
+      var blackLinePosition = blackBar.getBoundingClientRect();
+      var axeBarCenterPosition = axeBarCenter.getBoundingClientRect();
+
+      setInterval(function () {
+        blackLine = blackBar.getBoundingClientRect();
+        axeBarCenterPosition = blackBar.getBoundingClientRect();
+
+        if (blackLine.right >= 950) {
+          if (blackLine.right < 1150) {
+            canChop = true;
+          }
+          else {
+            canChop = false;
+
+          }
+        }
+        else {
+          canChop = false;
+
+        }
+
+      }, 1)
+    })
+
+    function chop() {
+      music.play();
+      var scoreText = document.getElementById("score");
+
+      if (canChop) {
+        console.log("wowza you chopped it");
+        score += 1;
+        document.getElementById("score").innerHTML = "score:" + score;
+      }
+
+      if (score == 3) {
+        console.log("yay finally smh");
+        alert("Congrats! You chopped enough wood!");
+        document.getElementById("return").style.display = "block";
+        console.log("display");
+
+      }
+
+    }
+
+  </script>
+</head>
+
+<body>
+  <div class="bgimg"></div>
+
+  <div id="rules"> Chop enough wood by clicking "chop!" while the axe is on the middle box.</div>
+
+  <div class="axebar" id="yellowBar">
+    <div class="axebarcenter" id="yellowBarCenter">
+      <div class="axemove" id="linethingidk"></div>
+    </div>
+  </div>
+
+
+  <div id="score">
+    score:
+  </div>
+
+  <div id="return"> <a href="game.html"> HINT: stone >> </a> </div>
+  <div><button onclick="chop()">CHOP!</button></div>
+
+  <audio loop id="music">
+    <source src="backgroundmusic.wav" type="audio/wav">
+  </audio>
+
+
+</body>

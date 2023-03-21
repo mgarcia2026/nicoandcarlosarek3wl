@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Taraya</title>
+  <link href="style.css" rel="stylesheet" type="text/css" >
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sono">
+
+  <style>
+   body {
+      margin: 0;
+	  height: 100vh;
+	  width: 100%;
+    }
+    
+	.bgimg {
+	  margin: 0;
+	  background-image: url('house.jpg');
+	  background-size: cover;
+	  height: 100vh;
+	  width: 100%;
+	}
+	
+	img {
+	height: 110%;
+	}
+	
+    h1 {
+      font-family: 'Sono', serif;
+      color: #25322A;
+      padding: 40px;
+      padding-left: 780px;
+      padding-top: 350px;
+      font-size: 100px;
+      text-shadow: 2px 2px #BAC88E;
+    }
+
+    a {
+      font-family: 'Sono', serif;
+      color: #BAC88E;
+      padding: 0;
+      font-size: 25px;
+      text-decoration: none;
+    }
+
+    p {
+      font-family: 'Sono', serif;
+      color: #25322A;
+      padding: 7px;
+      font-size: 25px;
+    }
+	
+	#narration {
+	  font-family: 'Sono', serif;
+      color: #26533A;
+      padding: 13px;
+	  margin: 20px;
+      font-size: 25px;
+      border-radius: 20px;
+      background-color: #D8E1BF;
+	  box-shadow: 2px 2px #26533A;
+	  position: fixed;
+	  bottom: 120px;
+	}
+	
+	#button {
+	  font-family: 'Sono', serif;
+      color: #26533A;
+      padding: 13px;
+	  margin: 20px;
+      font-size: 25px;
+      border-radius: 20px;
+      background-color: #D8E1BF;
+	  box-shadow: 2px 2px #26533A;
+	  position: fixed;
+	  bottom: 220px;
+	  float: left;
+	}
+	
+	#audio {
+	bottom: 500px;
+	float: left;
+	}
+	
+    #log {
+	  font-family: 'Sono', serif;
+      color: #26533A;
+      padding: 13px;
+	  margin: 20px;
+      font-size: 25px;
+      border-radius: 20px;
+      background-color: #D8E1BF;
+	  box-shadow: 2px 2px #26533A;
+	  position: fixed;
+	  top: 635px;
+	  left: 950px;
+	  width: 100px;
+	  height: 100px;
+	  opacity: 0;
+	}
+	
+	#stone {
+	  font-family: 'Sono', serif;
+      color: #26533A;
+      padding: 13px;
+	  margin: 20px;
+      font-size: 25px;
+      border-radius: 20px;
+      background-color: #D8E1BF;
+	  box-shadow: 2px 2px #26533A;
+	  position: fixed;
+	  top: 870px;
+	  left: 1350px;
+	  width: 100px;
+	  height: 100px;
+	  opacity: 0;
+	}
+	
+	#chimney {
+	  font-family: 'Sono', serif;
+      color: #26533A;
+      padding: 13px;
+	  margin: 20px;
+      font-size: 25px;
+      border-radius: 20px;
+      background-color: #D8E1BF;
+	  box-shadow: 2px 2px #26533A;
+	  position: fixed;
+	  top: 170px;
+	  left: 1530px;
+	  width: 100px;
+	  height: 100px;
+	  opacity: 0;
+	}
+  </style>
+
+  <script>
+	var clickCount = 0;
+	
+	function changeNarr(){
+	    clickCount++;
+		audio.play();
+	if(clickCount==1){
+    document.getElementById("narration").innerHTML =  "You can go through the chimney with the ladder!";
+	}
+	else if (clickCount==2){
+	document.getElementById("narration").innerHTML = "Whhhoosh! [The owner of the voice safely enters the house.] Thank you, traveler! You are free!";
+	}
+	else if (clickCount==3){
+	document.getElementById("narration").innerHTML = "In a blink of an eye, you wake up in your bedroom. The sun is up; what a strange dream...";
+	}
+	else {
+	document.getElementById("narration").innerHTML = "The end... unless";
+	window.location.href = "home.html";
+	}
+	
+	console.log(clickCount);
+	}
+
+  </script>
+</head>
+
+<body>
+  <div class = "bgimg"></div>
+  
+  <div id = "narration">“Guess we’re doing this now, now how am I gonna get in without a key ?”</div>
+  <div id = "button" onclick="changeNarr()"> >> </div>
+  
+  <audio loop id = "audio">
+  <source src = "backgroundmusic.wav" type = "audio/wav">
+  </audio> 
+  
+</body>
+
+</html>

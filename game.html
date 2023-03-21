@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Taraya</title>
+  <link href="style.css" rel="stylesheet" type="text/css" >
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sono">
+
+  <style>
+   body {
+      margin: 0;
+	  height: 100vh;
+	  width: 100%;
+    }
+    
+	.bgimg {
+	  margin: 0;
+	  background-image: url('house.jpg');
+	  background-size: cover;
+	  height: 100vh;
+	  width: 100%;
+	}
+	
+	img {
+	height: 110%;
+	}
+	
+    h1 {
+      font-family: 'Sono', serif;
+      color: #25322A;
+      padding: 40px;
+      padding-left: 780px;
+      padding-top: 350px;
+      font-size: 100px;
+      text-shadow: 2px 2px #BAC88E;
+    }
+
+    a {
+      font-family: 'Sono', serif;
+      color: #BAC88E;
+      padding: 0;
+      font-size: 25px;
+      text-decoration: none;
+    }
+
+    p {
+      font-family: 'Sono', serif;
+      color: #25322A;
+      padding: 7px;
+      font-size: 25px;
+    }
+	
+	#narration {
+	  font-family: 'Sono', serif;
+      color: #26533A;
+      padding: 13px;
+	  margin: 20px;
+      font-size: 25px;
+      border-radius: 20px;
+      background-color: #D8E1BF;
+	  box-shadow: 2px 2px #26533A;
+	  position: fixed;
+	  bottom: 120px;
+	}
+	
+	#skip {
+	  font-family: 'Sono', serif;
+      color: #26533A;
+      padding: 13px;
+	  margin: 20px;
+      font-size: 25px;
+      border-radius: 20px;
+      background-color: #D8E1BF;
+	  box-shadow: 2px 2px #26533A;
+	  position: fixed;
+	  bottom: 220px;
+	  left: 1750px;
+	}
+	
+	#button {
+	  font-family: 'Sono', serif;
+      color: #26533A;
+      padding: 13px;
+	  margin: 20px;
+      font-size: 25px;
+      border-radius: 20px;
+      background-color: #D8E1BF;
+	  box-shadow: 2px 2px #26533A;
+	  position: fixed;
+	  bottom: 220px;
+	  float: left;
+	}
+	
+	#audio {
+	bottom: 500px;
+	float: left;
+	}
+	
+    #log {
+	  font-family: 'Sono', serif;
+      color: #26533A;
+      padding: 13px;
+	  margin: 20px;
+      font-size: 25px;
+      border-radius: 20px;
+      background-color: #D8E1BF;
+	  box-shadow: 2px 2px #26533A;
+	  position: fixed;
+	  top: 635px;
+	  left: 950px;
+	  width: 100px;
+	  height: 100px;
+	  opacity: 0;
+	}
+	
+	#stone {
+	  font-family: 'Sono', serif;
+      color: #26533A;
+      padding: 13px;
+	  margin: 20px;
+      font-size: 25px;
+      border-radius: 20px;
+      background-color: #D8E1BF;
+	  box-shadow: 2px 2px #26533A;
+	  position: fixed;
+	  top: 870px;
+	  left: 1350px;
+	  width: 100px;
+	  height: 100px;
+	  opacity: 0;
+	}
+	
+	#chimney {
+	  font-family: 'Sono', serif;
+      color: #26533A;
+      padding: 13px;
+	  margin: 20px;
+      font-size: 25px;
+      border-radius: 20px;
+      background-color: #D8E1BF;
+	  box-shadow: 2px 2px #26533A;
+	  position: fixed;
+	  top: 170px;
+	  left: 1530px;
+	  width: 100px;
+	  height: 100px;
+	  opacity: 0;
+	}
+  </style>
+
+  <script>
+  
+    function skipNarr() {
+	document.getElementById("narration").style.display =  "none";
+	document.getElementById("button").style.display =  "none";
+	document.getElementById("skip").style.display =  "none";
+	}
+	
+	var clickCount = 0;
+	
+	function changeNarr(){
+	    clickCount++;
+	    audio.play();
+	if(clickCount==1){
+    document.getElementById("narration").innerHTML =  "“Helloooo? Is anyone out there?” a voice calls out to you.";
+	aud1.play();
+	}
+	else if (clickCount==2){
+	document.getElementById("narration").innerHTML = "“Ah! A traveler, may I request your assistance?”";
+	aud2.play();
+	}
+	else if (clickCount==3){
+	document.getElementById("narration").innerHTML = "“Who am I? That…is unimportant, think of me as the resident of the home you see before you.”";
+	aud3.play();
+	}
+	else if (clickCount==4){
+    document.getElementById("narration").innerHTML = "“I’ll make it a deal, you help me, and I tell you the way out of here! Sounds fair? Great !” You never get the chance to actually decide but here we go anyway."
+	aud4.play();
+	}
+	else {
+	document.getElementById("narration").style.display =  "none";
+	document.getElementById("button").style.display =  "none";
+	}
+	
+	console.log(clickCount);
+	}
+
+  </script>
+</head>
+
+<body>
+  <div class = "bgimg" onclick="hintClick()"></div>
+  
+  <div id = "narration">Lost in your journey through the thick of the mystical Mt.Tayara you encounter a cozy little cottage although it appears deserted.</div>
+  <div id = "button" onclick="changeNarr()"> >> </div>
+  <div id = "skip" onclick = "skipNarr()"> skip>> </div>
+  
+  <audio loop id = "audio">
+  <source src = "backgroundmusic.wav" type = "audio/wav">
+  </audio> 
+  
+  <div id = "log">
+  <a href = "xtrachallenge3.html"> woh </a>
+  </div>
+  
+   <div id = "chimney">
+  <a href = "victory.html"> woh </a>
+  </div>
+  
+  <div id = "stone">
+  <a href = "xtrachallenge1.html"> woh </a>
+  </div>
+  
+  <audio id = "aud1">
+  <source src = "1.wav" type = "audio/wav">
+  </audio> 
+  
+  <audio id = "aud2">
+  <source src = "2.wav" type = "audio/wav">
+  </audio> 
+  
+  <audio id = "aud3">
+  <source src = "3.wav" type = "audio/wav">
+  </audio> 
+  
+  <audio id = "aud4">
+  <source src = "4.wav" type = "audio/wav">
+  </audio> 
+  
+</body>
+
+</html>
