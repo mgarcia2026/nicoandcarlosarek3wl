@@ -154,6 +154,7 @@
     }
   </style>
   <script>
+  
     var thetetx = '';
     var word = '';
     var fear = 3;
@@ -309,18 +310,22 @@
         alert("You got " + fear + " attempts left. Make 'em count!");
         if (fear == 0) {
           alert("Welp, sorry not sorry I guess. See ya around!");
-          window.location.href = "index.html";
+          window.location.href = "home.html";
 
         }
       }
     }
+	
+	function music() {
+	 deltarune.play();
+	}
   </script>
 
 </head>
 
 <body>
 
-  <div class="bgimg"> </div>
+  <div class="bgimg" onmousemove="music()"> </div>
 
   <header> A Troll's Riddle </header>
 
@@ -370,7 +375,10 @@
   </div>
 
 
-
+  <audio loop id = "deltarune">
+  <source src = "riddlemusic.mp3" type = "audio/mp3">
+  </audio>
+  
   <ul id="list" class="list-group">
 
   </ul>
